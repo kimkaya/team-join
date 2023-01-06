@@ -19,9 +19,9 @@ const industry = [
 '디자인',
 ].sort();
 
-const entranceYearArray = [];
+const birth = [];
 for (let i = 1962; i < 2004; i++) {
-  entranceYearArray.push(i);
+  birth.push(i);
 }
 
 function OfficeRegister({ history ,rpost}) {
@@ -125,31 +125,31 @@ function OfficeRegister({ history ,rpost}) {
       password: userPw,
       email: userEmail,
       name: userName,
-      entranceYear: option,
+      birth: option,
       office: officeInput,
     };
     if (overIdLength || overPwLength) {
       return;
-    } else if (!userId || !userPw || !userEmail || !userName) {
+    } else if (!userId || !userPw || !userEmail || !userNickname) {
       alert("필수 항목을 작성해주세요");
       return;
-    } else if (!industry.includes(officeInput)) {
-      alert("분야");
+    } else if (!SCHOOL_ARR.includes(company)) {
+      alert("기업을 선택해주세요.");
       return;
-    } else if (usableId === false) {
+    } else if (usableId == false) {
       alert("아이디 중복확인을 해주세요");
       return;
     } else {
-      dispatch(registerOffice(body))
-      .then((response) => {
-        if (response.payload.success) {
-          alert("회원가입을 완료했습니다.");
-          history.push("./");
-        } else {
-          alert("회원가입에 실패했습니다.");
-        }
-      })
-      .catch((error) => console.log(error));
+      dispatch(registerUser(body))
+        .then((response) => {
+          if (response.payload.success) {
+            alert("회원가입을 완료했습니다.");
+            history.push("./");
+          } else {
+            alert("회원가입에 실패했습니다.");
+            // ((error) => console.log(error));
+          }
+        })
     }
   };
   return (
@@ -203,7 +203,7 @@ function OfficeRegister({ history ,rpost}) {
               labelName="출생년도"
               handleOption={handleOption}
               option={option}
-              dataArr={entranceYearArray}
+              dataArr={birth}
             />
             <RegisterInput
               labelName="산업분야"

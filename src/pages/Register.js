@@ -24,9 +24,9 @@ const COMPANY_ARR = [
   '삼성',
 ].sort();
 
-const birthArray = [];
+const birth = [];
 for (let i = 1962; i < 2004; i++) {
-  birthArray.push(i);
+  birth.push(i);
 }
 
 function Register({ history, rpost }) {
@@ -37,6 +37,8 @@ function Register({ history, rpost }) {
     userEmail: "",
     userName: "",
     usableId: false,
+    userCompany:"",
+
   });
 
   const { userId, userPw, userEmail, userName, usableId } = inputs;
@@ -48,13 +50,13 @@ function Register({ history, rpost }) {
   const [overPwLength, setOverPwLength] = useState(false);
 
 
-  const signpost = () => {
+  // const signpost = () => {
 
-  let data = {
-    id: userId
-  };
+  // let data = {
+  //   id: userId
+  // };
 
-  let api = `/register/checkId/${userId}`
+  // let api = `/register/checkId/${userId}`
 
 
   //   rpost({ api: api, data: data }, (err, response) => {
@@ -156,22 +158,6 @@ function Register({ history, rpost }) {
 
   //   //   }
   //   // }) 
-    axios
-      .post(`/register/checkId/${userId}`, { id: userId })
-      .then((response) => {
-        console.log(response);
-        if (response.status === 200) {
-          setInput({
-            ...inputs,
-            usableId: true,
-          });
-          alert("사용가능한 아이디입니다.");
-        }
-        else{
-          console.log(error);
-          alert("다른 아이디를 입력해주세요");}
-      })
-  };
 
   const checkId = (e) => {
     e.preventDefault();
@@ -230,10 +216,10 @@ function Register({ history, rpost }) {
     } else if (!userId || !userPw || !userEmail || !userName) {
       alert("필수 항목을 작성해주세요");
       return;
-    } else if (!COMPANY_ARR.includes(companyInput)) {
+    } else if (!companyInput.includes(companyInput)) {
       alert("기업을 선택해주세요.");
       return;
-    } else if (usableId === false) {
+    } else if (usableId == false) {
       alert("아이디 중복확인을 해주세요");
       return;
     } else {
@@ -256,7 +242,7 @@ function Register({ history, rpost }) {
         <Header link={"./"} title="회원가입" backbutton={true} />
         <StyledBox padding="18px 16px" lineHeight="20px">
           <form onSubmit={checkId}>
-            <Button onClick={e => {signpost(e)}}>버튼</Button>
+            {/* <Button onClick={e => {signpost(e)}}>버튼</Button> */}
             <RegisterInput
               labelName="아이디"
               name="userId"
@@ -268,7 +254,7 @@ function Register({ history, rpost }) {
             {overIdLength && (
               <LimitOnLength>아이디를 8자 이내로 입력해주세요</LimitOnLength>
             )}
-            <CheckIdButton onClick={(e) => { checkId(e) }}>중복체크</CheckIdButton>
+            <CheckIdButton onClick={checkId}>중복체크</CheckIdButton>
           </form>
           <form onSubmit={SignUp}>
             <RegisterInput
@@ -302,7 +288,7 @@ function Register({ history, rpost }) {
               labelName="출생년도"
               handleOption={handleOption}
               option={option}
-              dataArr={birthArray}
+              dataArr={birth}
             />
             <RegisterInput
               labelName="기업선택"
@@ -326,5 +312,6 @@ function Register({ history, rpost }) {
     </StyledContainer>
   );
 }
+
 
 export default withRouter(Register);
