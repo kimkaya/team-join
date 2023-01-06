@@ -57,23 +57,23 @@ function Register({ history, rpost }) {
   let api = `/register/checkId/${userId}`
 
 
-    rpost({ api: api, data: data }, (err, response) => {
-      console.log("2", api);
-      console.log("2", data);
-      if (err) {
-        console.log(response.state===200);
-        setInput({
-          ...inputs,
-          usableId: true,
-        });
-        alert("사용가능한 아이디입니다.");
-      }
-      else {
-        console.log(err);
-        alert("다른 아이디를 입력해주세요");
-      }
-    })
-  }
+  //   rpost({ api: api, data: data }, (err, response) => {
+  //     console.log("2", api);
+  //     console.log("2", data);
+  //     if (err) {
+  //       console.log(response.state===200);
+  //       setInput({
+  //         ...inputs,
+  //         usableId: true,
+  //       });
+  //       alert("사용가능한 아이디입니다.");
+  //     }
+  //     else {
+  //       console.log(err);
+  //       alert("다른 아이디를 입력해주세요");
+  //     }
+  //   })
+  // }
 
   
 
@@ -156,22 +156,22 @@ function Register({ history, rpost }) {
 
   //   //   }
   //   // }) 
-  //   // axios
-  //   //   .post(`/register/checkId/${userId}`, { id: userId })
-  //   //   .then((response) => {
-  //   //     console.log(response);
-  //   //     if (response.status === 200) {
-  //   //       setInput({
-  //   //         ...inputs,
-  //   //         usableId: true,
-  //   //       });
-  //   //       alert("사용가능한 아이디입니다.");
-  //   //     }
-  //   //     else{
-  //   //       console.log(error);
-  //   //       alert("다른 아이디를 입력해주세요");}
-  //   //   })
-  // };
+    axios
+      .post(`/register/checkId/${userId}`, { id: userId })
+      .then((response) => {
+        console.log(response);
+        if (response.status === 200) {
+          setInput({
+            ...inputs,
+            usableId: true,
+          });
+          alert("사용가능한 아이디입니다.");
+        }
+        else{
+          console.log(error);
+          alert("다른 아이디를 입력해주세요");}
+      })
+  };
 
   const checkId = (e) => {
     e.preventDefault();

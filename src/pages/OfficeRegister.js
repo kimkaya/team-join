@@ -64,36 +64,40 @@ function OfficeRegister({ history ,rpost}) {
     }
   };
 
-  const checkId = (e) => {
-    e.preventDefault();
-    if (overIdLength) {
-      return;
-    }
-    let data = {
-      id: String(userId)
-    };
+  // const checkId = (e) => {
+  //   e.preventDefault();
+  //   if (overIdLength) {
+  //     return;
+  //   }
+  //   let data = {
+  //     id: String(userId)
+  //   };
   
-    let api = `/officeregister/checkId/${userId}`
+  //   let api = `/officeregister/checkId/${userId}`
   
   
-      rpost({ api: api, data: data }, (err, response) => {
-        console.log("2", api);
-        console.log("2", data);
-        if (err) {
-          console.log(response.state===200);
+    const checkId = (e) => {
+      e.preventDefault();
+      if (overIdLength) {
+        return;
+      }
+      axios
+        .post(`http://localhost:8090/officeregister/checkId`, null, {params:{ id: userId }})
+        .then((response) => {
+          console.log(response);
+          
           setInput({
-            ...inputs,
-            usableId: true,
+              ...inputs,
+              usableId: true,
           });
           alert("사용가능한 아이디입니다.");
-        }
-        else {
-          console.log(err);
+          
+        })
+        .catch((error) => {
+          console.log(error);
           alert("다른 아이디를 입력해주세요");
-        }
-      })
-    } 
-    
+        });
+    };
 
   const handleOption = (e) => {
     setOption(e.target.value);
@@ -211,6 +215,7 @@ function OfficeRegister({ history ,rpost}) {
             />
             <RegisterInput
             labelName='경력'
+            name="career"
             type='text'
             placeholder="나의 경력"
             onChange={onChange}
