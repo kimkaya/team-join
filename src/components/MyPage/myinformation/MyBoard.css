@@ -1,0 +1,67 @@
+.title {
+  text-align: center;
+  font-size: 22px;
+  margin-bottom: 18px;
+  color:rgb(245, 144, 94);
+}
+
+/* .myinfo3 {
+  width: 100%;
+  max-width: 1200px;
+  height:700px auto;
+  padding: 40px 30px 70px 50px;
+  margin: 0 auto;
+  margin-top: 70px;
+  text-align: center;
+  border-radius: 20px;
+  border: 2px solid rgb(205, 139, 33);
+} */
+
+.boardhead {
+  font-size: 12px;
+  background-color: rgba(215, 96, 37, 0.2);
+}
+
+tr th {
+  padding: 12px;
+  border: 1px solid #eeeeee;
+  text-align: center;
+}
+
+tr td {
+  border: 1px solid #eeeeee;
+  text-align: left;
+  font-size: 12px;
+}
+
+.detailnum1 {
+  width: 11.2%;
+}
+
+/* .detailboardtype {
+  width: 17%;
+} */
+
+/* .detailanonymous {
+  width: 17%;
+} */
+
+.detailhead {
+  text-align: center;
+  position: relative;
+  width: 27%;
+}
+
+.detailindustry {
+  width: 24%;
+}
+
+.detailbody {
+  width: 152px;
+  position: absolute;
+  display: block;
+  overflow: hidden;  
+  text-overflow: ellipsis;  
+  white-space: nowrap;  
+  
+}

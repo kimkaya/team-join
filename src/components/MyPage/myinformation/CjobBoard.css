@@ -1,0 +1,64 @@
+.title {
+  text-align: center;
+  font-size: 22px;
+  margin-bottom: 18px;
+  color:rgb(245, 144, 94);
+}
+
+/* .myinfo2 {
+  width: 100%;
+  max-width: 1000px;
+  height:700px auto;
+  padding: 40px 30px 70px;
+  margin: 0 auto;
+  margin-top: 70px;
+
+  text-align: center;
+  border-radius: 20px;
+  border: 2px solid rgb(205, 139, 33);
+} */
+
+.cjobhead {
+  background-color: rgba(215, 96, 37, 0.2);
+  font-size: 12px;
+  text-align: center;
+}
+
+tr th {
+  padding: 12px;
+  border: 1px solid #eeeeee;
+  text-align: center;
+}
+
+tr td {
+  border: 1px solid #eeeeee;
+  text-align: left;
+  font-size: 12px;
+}
+
+.detailnum {
+  width: 18.5%;
+}
+
+.detailid {
+  width: 17%;
+}
+
+.detailhead1 {
+  text-align: center;
+  position: relative;
+}
+
+.detailindustry1 {
+  width: 16%;
+}
+
+.detailcbody {
+  width: 221px;
+  position: absolute;
+  display: block;
+  overflow: hidden;  
+  text-overflow: ellipsis;  
+  white-space: nowrap;  
+  
+}
