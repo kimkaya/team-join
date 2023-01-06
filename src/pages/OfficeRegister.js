@@ -130,17 +130,17 @@ function OfficeRegister({ history ,rpost}) {
     };
     if (overIdLength || overPwLength) {
       return;
-    } else if (!userId || !userPw || !userEmail || !userNickname) {
+    } else if (!userId || !userPw || !userEmail || !userName) {
       alert("필수 항목을 작성해주세요");
       return;
-    } else if (!SCHOOL_ARR.includes(company)) {
-      alert("기업을 선택해주세요.");
+    } else if (!officeInput.includes(officeInput)) {
+      alert("분야.");
       return;
     } else if (usableId == false) {
       alert("아이디 중복확인을 해주세요");
       return;
     } else {
-      dispatch(registerUser(body))
+      dispatch(registerOffice(body))
         .then((response) => {
           if (response.payload.success) {
             alert("회원가입을 완료했습니다.");
@@ -213,13 +213,6 @@ function OfficeRegister({ history ,rpost}) {
               onChange={handleSearch}
               value={officeInput}
             />
-            <RegisterInput
-            labelName='경력'
-            name="career"
-            type='text'
-            placeholder="나의 경력"
-            onChange={onChange}
-            value={UserCareer}/>
 
             {officeInput && showCompanyList && (
               <CompanySearchResult
